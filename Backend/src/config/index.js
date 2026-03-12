@@ -15,7 +15,7 @@ const startServer = async () => {
     });
 
     app.listen(process.env.PORT || 3000, () => {
-      console.log(`server is runing on ${process.env.PORT}`);
+      console.log(`server is running on ${process.env.PORT}`);
     });
   } catch (error) {
     console.error("failed to connect to databse:", error);
