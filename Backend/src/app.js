@@ -1,23 +1,12 @@
-import express from "express"
+import express from "express";
+import userRoutes from "./routes/userRoutes.js";
+import postRoute from "./routes/postRoute.js";
 
-const app = express(); // create an instance of express application 
-app.use(express.json()) // this will allow us to parse the incoming from client request body as JSON
-import userRoutes from "./routes/userRoutes.js"
+const app = express(); 
 
-app.use("/api/users", userRoutes) // this will mount the userRoutes on the /api/users path, so any request to /api/users will be handled by the userRoutes
+app.use(express.json()); 
 
-
-app.listen(3000, () => {
-    console.log("server is running on port 3000")
-})
-
-
-
-
-
-
-
-
-
+app.use("/api/users", userRoutes); 
+app.use("/api/posts", postRoute); 
 
 export default app;

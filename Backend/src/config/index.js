@@ -1,12 +1,8 @@
-import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./db.js";
-import userRoutes from "../routes/userRoutes.js";
+import app from "../app.js"; // Import the Express application from app.js
 
-dotenv.config(); //load environment from .env file
-const app = express();
-app.use(express.json()); // this will allow us to parse the incoming from client request body as JSON
-app.use("/api/users", userRoutes); // mount the userRoutes on the /api/users path
+dotenv.config(); // load environment from .env file
 
 const startServer = async () => {
   try {
@@ -18,12 +14,12 @@ const startServer = async () => {
     });
 
     app.listen(process.env.PORT || 3000, () => {
-      console.log(`server is running on ${process.env.PORT}`);
+      console.log(`server is running on port ${process.env.PORT || 3000}`);
     });
   } catch (error) {
-    console.error("failed to connect to databse:", error);
+    console.error("failed to connect to database:", error);
     process.exit(1);
   }
 };
-startServer();
 
+startServer();
